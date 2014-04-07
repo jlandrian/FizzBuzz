@@ -1,8 +1,8 @@
 //The function that does the counting, fizzing and buzzing
-    function fizzBuzz() {
-        for (var i = 1; i <= 100; i++) {
+    function fizzBuzz(count) {
+        for (var i = 1; i <= count; i++) {
             if (i % 15 === 0) {
-                $("div").append("FizzBuzz, ");
+                $("div").append("fizzBuzz, ");
         } else if (i % 3 === 0){
                 $("div").append("fizz, ");
         } else if (i % 5 === 0){
@@ -19,14 +19,19 @@ $(document).ready(function(){
 
     $(".text").focus();
 
-    $("button").on("click", function() {
+    $("body").on("keydown", function(event) {
         //makes an alert if they didn't enter anything
         var added = $.trim($(".text").val());
+        var integer = $(".text").val();
+        if (event.keyCode == 13){
         if (added == "") {
             alert("please enter a number between 1 and 100");
-            } else {
-            //appends fizzBuzz to the DIV
-            $("div").append(fizzBuzz);
+            } else if (integer <= 100) {
+            $("div").empty();
+            $("div").append(fizzBuzz(integer));
+            } else if (integer > 100 || integer < 1) {
+                alert("please enter a number between 1 and 100");
             }
-    });
+        }
+    }); 
 });
