@@ -14,6 +14,7 @@
         $(".text").focus();
 };
 
+
 //The function that handles user input
     function findNum() {
         var added = $.trim($(".text").val());
@@ -23,9 +24,9 @@
             } else if (integer <= 100) {
             $("div").empty();
             $("div").append(fizzBuzz(integer));
-            } else if (integer > 100 || integer < 1) {
+            } else if ((isNaN(integer)) || integer > 100 || integer <= 0 || integer != 0) {
                 alert("please enter a number between 1 and 100");
-            }
+            } 
         $(".text").focus();
     };
 
@@ -38,7 +39,7 @@ $(document).ready(function(){
         }
     });
     
-    $("button").on('click', function() {
+$("button").on('click', function() {
         findNum();                   
     });
 });
